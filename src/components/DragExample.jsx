@@ -4,7 +4,6 @@ import { Draggable, Droppable } from "react-drag-and-drop";
 function DragExample() {
   function handleDrop(data, event) {
     // This method runs when the data drops
-    console.log(data); // 'bar'
   }
   return (
     <div>

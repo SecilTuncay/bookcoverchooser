@@ -3,11 +3,12 @@ import { Tabs, Tab } from "react-bootstrap";
 import { GiBookCover } from "react-icons/gi";
 import { GrEdit } from "react-icons/gr";
 import { FaFileDownload } from "react-icons/fa";
+import ChooseBookComp from "../ChooseBookComp";
 
 const TabComponent = () => {
   return (
     <div className="px-8 py-4 container">
-      <Tabs defaultActiveKey="daily">
+      <Tabs defaultActiveKey="choosebook">
         <Tab
           eventKey="choosebook"
           title={
@@ -18,6 +19,7 @@ const TabComponent = () => {
         >
           <div className="bg-white">
             <h4>Choose Book</h4>
+            <ChooseBookComp />
           </div>
         </Tab>
         <Tab

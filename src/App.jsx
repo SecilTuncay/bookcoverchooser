@@ -1,16 +1,17 @@
 import "./App.css";
-import ChooseBookComp from "./components/ChooseBookComp";
+import CoverEditor from "./components/CoverEditor";
 import Header from "./components/ui/Header";
-/* import LastDragExample from "./components/LastDragExample"; */
 import TabComponent from "./components/ui/TabComponent";
+import { BookCoverInfoContextProvider } from "./dataTransfer/BookCoverInfoContext";
 
 function App() {
   return (
     <>
-      {/* <LastDragExample /> */}
       <Header />
-      <TabComponent />
-      <ChooseBookComp />
+      <BookCoverInfoContextProvider>
+        <TabComponent />
+        <CoverEditor />
+      </BookCoverInfoContextProvider>
     </>
   );
 }
