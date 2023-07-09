@@ -4,10 +4,11 @@ import { useScreenshot, createFileName } from "use-react-screenshot";
 import { Button } from "react-bootstrap";
 
 function ImagePreview() {
-  const ref = useRef(null);
+  const imageRef = useRef(null);
   const { selectedBook } = useContext(BookCoverInfoContext);
   const { screenShot } = selectedBook;
-  const [image, takeScreenShot] = useScreenshot({
+
+  const [imageSS, takeScreenShot] = useScreenshot({
     type: "image/jpeg",
     quality: 1.0,
   });
@@ -19,19 +20,20 @@ function ImagePreview() {
     }
   }, [screenShot]);
 
-  const download = (image, { name = "img", extension = "jpg" } = {}) => {
+  const download = (imageSS, { name = "img", extension = "jpg" } = {}) => {
     const a = document.createElement("a");
-    a.href = image;
+    a.href = imageSS;
     a.download = createFileName(extension, name);
     a.click();
   };
-  const downloadScreenshot = () => takeScreenShot(ref.current).then(download);
+  const downloadScreenshot = () =>
+    takeScreenShot(imageRef.current).then(download);
   return (
     <div>
       <h4>Preview & Download</h4>
       {screenShot && (
         <div className="flex justify-center">
-          <img ref={ref} src={tempScreenShot} alt={"ScreenShot"} />
+          <img ref={imageRef} src={tempScreenShot} alt={"ScreenShot"} />
         </div>
       )}
       <div className="flex justify-center my-3">

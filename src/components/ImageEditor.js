@@ -24,8 +24,6 @@ function ImageEditor(props) {
   });
 
   const getImage = () => {
-    console.log(typeof ref.current);
-    console.log(ref.current);
     takeScreenshot(ref.current);
     setScreenShot(ref.current);
   };
@@ -59,11 +57,10 @@ function ImageEditor(props) {
   function imageInfoClick(e) {
     setChosenTextArea(e.target.id);
   }
-
-  function saveCoverBtnHandler() {
+  function saveBtnHandler() {
     getImage();
-    changeTab(3);
   }
+
   return (
     <div className="m-6">
       <div
@@ -104,11 +101,11 @@ function ImageEditor(props) {
       </div>
 
       <div className="flex justify-center my-3">
-        <Button className="relative m-3" onClick={saveCoverBtnHandler}>
-          {/*  <Button className="relative m-3" onClick={getImage}> */}
+        <Button className="relative m-3" onClick={saveBtnHandler}>
           Save Cover Image
         </Button>
       </div>
+      <img src={screenShot} alt={"ScreenShot"} />
     </div>
   );
 }

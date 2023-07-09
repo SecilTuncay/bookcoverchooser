@@ -14,8 +14,8 @@ function ValueSelector(props) {
 
   function setRange() {
     if (props.vType === "fSize") {
-      setTempMin(8);
-      setTempMax(15);
+      setTempMin(12);
+      setTempMax(40);
       setTitle("Font Size :");
     } else {
       setTempMin(1);
@@ -32,7 +32,13 @@ function ValueSelector(props) {
   return (
     <div>
       <p className="inline-block text-[14px] mr-2">{title} </p>
-      <input onChange={setValue} type="number" min={tempMin} max={tempMax} />
+      <input
+        onChange={setValue}
+        type="number"
+        min={tempMin}
+        max={tempMax}
+        defaultValue={tempMin}
+      />
     </div>
   );
 }

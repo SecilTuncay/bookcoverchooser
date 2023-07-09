@@ -13,7 +13,7 @@ const SELECTED_BOOK = {
   bookInfo: [],
   fontsize: 12,
   fontcolor: "white",
-  letterspacing: 2,
+  letterspacing: 1,
   imgURL: "",
   tabNum: "1",
   screenShot: "",
