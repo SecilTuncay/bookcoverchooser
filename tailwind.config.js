@@ -19,13 +19,13 @@ module.exports = {
       },
       backgroundImage: {
         imageBackground:
-          "linear-gradient(50deg, rgba(51,65,85,1) 22%, rgba(51,65,85,0.7399160347732843) 52%, rgba(255,255,255,0.5) 59%, rgba(255,255,255,1) 65%, rgba(51,65,85,0.74) 71%, rgba(51,65,85,1) 80%), url('./images/header-back.jpg');",
+          "linear-gradient(50deg, rgba(51,65,85,1) 51%, rgba(51,65,85,0.7399160347732843) 56%, rgba(255,255,255,0.5) 59%, rgba(255,255,255,1) 61%, rgba(51,65,85,0.74) 71%, rgba(51,65,85,1) 80%), url('./images/bookCover2.jpg');",
       },
       dropShadow: {
-        "3xl": "0px 0px 31px 7px rgba(255,255,255,1)",
+        "3xl": "0px 0px 31px 7px rgba(0, 0, 0, 1)",
         "4xl": [
-          "0 35px 35px rgba(0, 0, 0, 0.25)",
-          "0 45px 65px rgba(0, 0, 0, 0.15)",
+          "0 35px 35px rgba(168, 156, 156, 0.25)",
+          "0 45px 65px rgba(168, 156, 156, 0.15)",
         ],
       },
     },

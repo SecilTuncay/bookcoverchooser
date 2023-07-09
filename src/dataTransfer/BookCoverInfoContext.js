@@ -12,7 +12,7 @@ export const BookCoverInfoContext = createContext({
 const SELECTED_BOOK = {
   bookInfo: [],
   fontsize: 12,
-  fontcolor: "white",
+  fontcolor: "red",
   letterspacing: 1,
   imgURL: "",
   tabNum: "1",

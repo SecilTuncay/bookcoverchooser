@@ -3,6 +3,7 @@ import { useScreenshot } from "use-react-screenshot";
 import { Button } from "react-bootstrap";
 import { BookCoverInfoContext } from "../dataTransfer/BookCoverInfoContext";
 import { Draggable } from "@syncfusion/ej2-base";
+import ImagePreview from "./ImagePreview";
 
 function ImageEditor(props) {
   const { bookInfo, fontcolor, fontsize, letterspacing, imgURL } =
@@ -14,18 +15,21 @@ function ImageEditor(props) {
   const [screenShot, takeScreenshot] = useScreenshot();
   const [chosenTextArea, setChosenTextArea] = useState("bName");
   const [bookNameTextInfo, setBookNameTextInfo] = useState({
-    bookNameFontColor: "white",
+    bookNameFontColor: "blue",
     bookNameFontSize: "12px",
     bookNameLetterSpacing: "1",
   });
   const [authNameTextInfo, setAuthNameTextInfo] = useState({
-    authNameFontColor: "white",
+    authNameFontColor: "red",
     authNameFontSize: "12px",
     authNameLetterSpacing: "1",
   });
 
   const getImage = () => {
+    console.log(screenShot);
+    debugger;
     takeScreenshot(ref.current);
+    console.log(screenShot);
     setScreenShot(ref.current);
   };
 
@@ -64,6 +68,7 @@ function ImageEditor(props) {
   }, [fontcolor, fontsize, letterspacing]);
 
   function imageInfoClick(e) {
+    debugger;
     setChosenTextArea(e.target.id);
   }
   function saveBtnHandler() {
@@ -74,7 +79,7 @@ function ImageEditor(props) {
     <div className="m-6">
       <div
         id="dragArea"
-        className="w-[450px] h-[600px] p-3"
+        className="w-[450px] h-[600px] p-3 border-1 border-slate-600"
         ref={ref}
         style={{
           backgroundImage: `url( ${imgURL})`,
@@ -115,6 +120,7 @@ function ImageEditor(props) {
           Save Cover Image
         </Button>
       </div>
+      <ImagePreview />
     </div>
   );
 }

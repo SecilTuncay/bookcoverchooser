@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Tabs, Tab } from "react-bootstrap";
 import { GiBookCover } from "react-icons/gi";
-import { GrEdit } from "react-icons/gr";
+import { FiEdit } from "react-icons/fi";
 import { FaFileDownload } from "react-icons/fa";
 import ChooseBookComp from "../ChooseBookComp";
 import { BookCoverInfoContext } from "../../dataTransfer/BookCoverInfoContext";
@@ -18,7 +18,7 @@ const TabComponent = () => {
   }, [tabNum, screenShot]);
 
   return (
-    <div className="px-8 py-4 container">
+    <div className="px-8 py-4 mt-4 container bg-slate-100 rounded-xl border border-stone-900 drop-shadow-4xl">
       <Tabs
         defaultActiveKey="1"
         activeKey={currentTab}
@@ -27,38 +27,32 @@ const TabComponent = () => {
         <Tab
           eventKey="1"
           title={
-            <div className="flex gap-2 items-center text-xs">
+            <div className="flex gap-2 items-center text-xs ">
               <GiBookCover /> Choose Book
             </div>
           }
         >
-          <div className="bg-white">
-            <ChooseBookComp />
-          </div>
+          <ChooseBookComp />
         </Tab>
         <Tab
           eventKey="2"
           title={
-            <div className="flex gap-2 items-center text-xs">
-              <GrEdit /> Edit Cover
+            <div className="flex gap-2 items-center text-xs ">
+              <FiEdit /> Edit Cover
             </div>
           }
         >
-          <div className="bg-white">
-            <CoverEditor />
-          </div>
+          <CoverEditor />
         </Tab>
         <Tab
           eventKey="3"
           title={
-            <div className="flex gap-2 items-center text-xs">
+            <div className="flex gap-2 items-center text-xs ">
               <FaFileDownload /> Preview & Download
             </div>
           }
         >
-          <div className="bg-white">
-            <ImagePreview />
-          </div>
+          <ImagePreview />
         </Tab>
       </Tabs>
     </div>

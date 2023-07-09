@@ -2,7 +2,6 @@ import "./App.css";
 
 import Header from "./components/ui/Header";
 import TabComponent from "./components/ui/TabComponent";
-import LastDragExample from "./components/LastDragExample";
 import { BookCoverInfoContextProvider } from "./dataTransfer/BookCoverInfoContext";
 
 function App() {

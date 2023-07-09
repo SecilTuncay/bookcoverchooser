@@ -19,12 +19,16 @@ function CoverEditor() {
 
   return (
     <>
-      <div className="flex flex-row justify-center p-6">
-        <div className="flex flex-col justify-center w-1/2">
-          <div className="mb-2">Select a textbox and style the text </div>
-          <DropdownSelector colors={fontColors} />
-          <ValueSelector vType="fSize" />
-          <ValueSelector vType="letterSpace" />
+      <div className="flex flex-row justify-start p-6">
+        <div className="flex flex-col justify-start align-top w-1/2">
+          <div className="mb-2">
+            <p className="text-blue-950">
+              Select a textbox and style the text{" "}
+            </p>
+            <DropdownSelector colors={fontColors} />
+            <ValueSelector vType="fSize" />
+            <ValueSelector vType="letterSpace" />
+          </div>
         </div>
 
         <ImageEditor imageInfo={selectedBook} />

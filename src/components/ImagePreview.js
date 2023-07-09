@@ -29,8 +29,8 @@ function ImagePreview() {
   const downloadScreenshot = () =>
     takeScreenShot(imageRef.current).then(download);
   return (
-    <div>
-      <h4>Preview & Download</h4>
+    <div className="flex flex-col justify-start p-6">
+      <p className="text-blue-950">Preview & Download Image </p>
       {screenShot && (
         <div className="flex justify-center">
           <img ref={imageRef} src={tempScreenShot} alt={"ScreenShot"} />
