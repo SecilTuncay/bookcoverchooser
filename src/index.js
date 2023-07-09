@@ -6,7 +6,9 @@ import Layout from "./components/ui/Layout";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Layout>
-    <App />
-  </Layout>
+  <React.StrictMode>
+    <Layout>
+      <App />
+    </Layout>
+  </React.StrictMode>
 );
