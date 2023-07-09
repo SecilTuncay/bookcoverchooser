@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Tabs, Tab } from "react-bootstrap";
 import { GiBookCover } from "react-icons/gi";
 import { GrEdit } from "react-icons/gr";
 import { FaFileDownload } from "react-icons/fa";
 import ChooseBookComp from "../ChooseBookComp";
+import { BookCoverInfoContext } from "../../dataTransfer/BookCoverInfoContext";
+import CoverEditor from "../CoverEditor";
+import ImagePreview from "../ImagePreview";
 
 const TabComponent = () => {
+  const [currentTab, setCurrentTab] = useState(1);
+  const { selectedBook } = useContext(BookCoverInfoContext);
+  const { tabNum, screenShot } = selectedBook;
+
+  useEffect(() => {
+    setCurrentTab(tabNum);
+  }, [tabNum, screenShot]);
+
   return (
     <div className="px-8 py-4 container">
-      <Tabs defaultActiveKey="choosebook">
+      <Tabs
+        defaultActiveKey="1"
+        activeKey={currentTab}
+        onSelect={(key) => setCurrentTab(key)}
+      >
         <Tab
-          eventKey="choosebook"
+          eventKey="1"
           title={
             <div className="flex gap-2 items-center text-xs">
               <GiBookCover /> Choose Book
@@ -18,12 +33,11 @@ const TabComponent = () => {
           }
         >
           <div className="bg-white">
-            <h4>Choose Book</h4>
             <ChooseBookComp />
           </div>
         </Tab>
         <Tab
-          eventKey="editcover"
+          eventKey="2"
           title={
             <div className="flex gap-2 items-center text-xs">
               <GrEdit /> Edit Cover
@@ -31,11 +45,11 @@ const TabComponent = () => {
           }
         >
           <div className="bg-white">
-            <h4>Edit Cover</h4>
+            <CoverEditor />
           </div>
         </Tab>
         <Tab
-          eventKey="download"
+          eventKey="3"
           title={
             <div className="flex gap-2 items-center text-xs">
               <FaFileDownload /> Preview & Download
@@ -43,7 +57,7 @@ const TabComponent = () => {
           }
         >
           <div className="bg-white">
-            <h4>Preview & Download</h4>
+            <ImagePreview />
           </div>
         </Tab>
       </Tabs>

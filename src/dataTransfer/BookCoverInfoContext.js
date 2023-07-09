@@ -6,13 +6,17 @@ export const BookCoverInfoContext = createContext({
   updateFontColor: () => {},
   updateLetterSpacing: () => {},
   updateImgURL: () => {},
+  changeTab: () => {},
+  setScreenShot: () => {},
 });
 const SELECTED_BOOK = {
-  bookInfo: ["seçil"],
-  fontsize: "12px",
-  fontcolor: "red",
-  letterspacing: "1",
+  bookInfo: [],
+  fontsize: 12,
+  fontcolor: "white",
+  letterspacing: 2,
   imgURL: "",
+  tabNum: "1",
+  screenShot: "",
 };
 
 export function BookCoverInfoContextProvider({ children }) {
@@ -32,6 +36,12 @@ export function BookCoverInfoContextProvider({ children }) {
   function updateImgURL(tempImgURL) {
     setSelectedBook({ ...selectedBook, imgURL: tempImgURL });
   }
+  function changeTab(tempTabNum) {
+    setSelectedBook({ ...selectedBook, tabNum: tempTabNum });
+  }
+  function setScreenShot(tempScreenShot) {
+    setSelectedBook({ ...selectedBook, screenShot: tempScreenShot });
+  }
   return (
     <BookCoverInfoContext.Provider
       value={{
@@ -41,6 +51,8 @@ export function BookCoverInfoContextProvider({ children }) {
         updateBookInfo,
         updateLetterSpacing,
         updateImgURL,
+        changeTab,
+        setScreenShot,
       }}
     >
       {children}

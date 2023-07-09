@@ -9,13 +9,10 @@ const baseURL = `https://api.nytimes.com/svc/books/v3/lists/full-overview.json?p
 const ChooseBookComp = (props) => {
   const bookCount = 10;
   const [bookList, setBookList] = useState([]);
-
-  const [chosenBookInfo, setChosenBookInfo] = useState([]);
-  const [file, setFile] = useState();
-
-  const [uploaderVisibility, setUploaderVisibility] = useState(false);
-
-  const { updateBookInfo } = useContext(BookCoverInfoContext);
+  //const [nextDisable, setNextDisable] = useState(true);
+  // const [completeTwo, setCompleteTwo] = useState([0, 0]);
+  const { updateBookInfo, updateImgURL, changeTab } =
+    useContext(BookCoverInfoContext);
 
   useEffect(() => {
     axios.get(`${baseURL}`).then((response) => {
@@ -26,52 +23,72 @@ const ChooseBookComp = (props) => {
   function setBookInfo(e) {
     let tempStr = e.target.value.split(" - ");
     updateBookInfo(tempStr);
+    // setCompleteTwo([1, ...completeTwo]);
+    // debugger;
   }
 
   function imageUpload(e) {
-    setFile(URL.createObjectURL(e.target.files[0]));
+    let reader = new FileReader(),
+      file = e.target.files[0];
+
+    reader.onloadend = function () {
+      updateImgURL(reader.result);
+    };
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   }
 
   return (
-    <>
-      {uploaderVisibility ? (
-        <input type="file" onChange={imageUpload} />
-      ) : (
-        <div id="bookSelector" className="border-l-gray-100">
-          <select
-            onChange={setBookInfo}
-            id="books"
-            className="bg-gray-50 
-          border border-gray-300 
+    <div className="flex flex-col justify-center  p-6">
+      <p className="text-blue-950">Choose Your Book & Image </p>
+      <div id="bookSelector" className="flex  my-3">
+        <select
+          onChange={setBookInfo}
+          id="books"
+          className="bg-gray-50 
+          border border-blue-800
           text-gray-900 text-xs 
           rounded-lg 
           focus:ring-blue-500 focus:border-blue-500 
           block px-3 py-1
           dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
-          dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          >
-            <option key="blankKey" hidden value>
-              Please select your book
-            </option>
-            {bookList
-              .filter((book, index) => index < bookCount)
-              .map((book, index) => {
-                return (
-                  <option key={index}>
-                    {book.title} - {book.author}
-                  </option>
-                );
-              })}
-          </select>
-        </div>
-      )}
-
-      <Button onClick={(e) => setUploaderVisibility(true)} variant="primary">
-        Next
-      </Button>
-      {/*  
-      <img src={file} /> */}
-    </>
+          dark:focus:ring-blue-500 dark:focus:border-blue-500
+          text-[14px]"
+        >
+          <option key="blankKey" hidden value>
+            Please select your book
+          </option>
+          {bookList
+            .filter((book, index) => index < bookCount)
+            .map((book, index) => {
+              return (
+                <option key={index}>
+                  {book.title} - {book.author}
+                </option>
+              );
+            })}
+        </select>
+      </div>
+      <div className="border-l-gray-100 flex  my-3">
+        <input
+          className="text-[14px] bg-gray-50
+          border border-blue-500 rounded-lg "
+          type="file"
+          onChange={imageUpload}
+        />
+      </div>
+      <div className="flex justify-end my-3">
+        <Button
+          /* disabled={nextDisable} */ onClick={(e) => {
+            changeTab(2);
+          }}
+          variant="primary"
+        >
+          Next
+        </Button>
+      </div>
+    </div>
   );
 };
 
