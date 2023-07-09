@@ -59,8 +59,3 @@ export function BookCoverInfoContextProvider({ children }) {
     </BookCoverInfoContext.Provider>
   );
 }
-
-/* export function useBookInfoContext() {
-  const { bookname, authorname } = useContext(BookCoverInfoContext);
-  return { bookname, authorname };
-} */

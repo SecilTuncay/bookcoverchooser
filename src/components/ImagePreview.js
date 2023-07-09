@@ -6,7 +6,7 @@ import { Button } from "react-bootstrap";
 function ImagePreview() {
   const imageRef = useRef(null);
   const { selectedBook } = useContext(BookCoverInfoContext);
-  const { screenShot } = selectedBook;
+  const { screenShot, tabNum } = selectedBook;
 
   const [imageSS, takeScreenShot] = useScreenshot({
     type: "image/jpeg",
