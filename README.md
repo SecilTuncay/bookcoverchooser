@@ -1,5 +1,21 @@
-# Getting Started with Create React App
+React JS | React Context | Bootstrap | Tailwind project. (not included mobile version! yet:) )
+Axios / SyncFusion - Draggable / use-react-screenshot
 
+![book1](https://github.com/SecilTuncay/bookcoverchooser/assets/32872209/e21a063d-a0b8-4f39-be88-5f142cd3eea6)
+![book2](https://github.com/SecilTuncay/bookcoverchooser/assets/32872209/ec90385f-b6f7-4dd9-b4c5-650824ac7076)
+
+Book Cover Chooser is app which you can create your own book covers.
+You can
+- choose the book from dropdown menu.
+- Upload an image from your computer
+- Change styles like font size, font color and letter spaing.
+- Preview and download tto your computer.
+
+To start project after clone;
+- npm install 
+- npm start
+
+# Getting Started with Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
